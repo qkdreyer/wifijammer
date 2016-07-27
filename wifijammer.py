@@ -83,6 +83,9 @@ def parse_args():
                                 of the world it's 13 so this options enables the \
                                 scanning of 13 channels",
                         action="store_true")
+    parser.add_argument("--dev",
+                        help="Dev mode",
+                        action="store_true")
 
     return parser.parse_args()
 
@@ -431,6 +434,9 @@ if __name__ == "__main__":
     conf.iface = mon_iface
     mon_MAC = mon_mac(mon_iface)
     first_pass = 1
+
+    if args.dev:
+        sys.exit(0)
 
     # Start channel hopping
     hop = Thread(target=channel_hop, args=(mon_iface, args))

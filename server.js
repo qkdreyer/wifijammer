@@ -1,7 +1,16 @@
-var http = require('http')
+var fs = require('fs');
+var app = require('express')();
 
-var server = http.createServer(function(req, res) {
-    res.end('Hello Node!');
+app.get('/', function(req, res) {
+    res.send('Hello World!');
 });
 
-server.listen(3000);
+app.get('/mac', function(req, res) {
+    res.json(JSON.parse(fs.readFileSync(__dirname + '/database.json', {
+        encoding: 'utf8'
+    })));
+});
+
+app.listen(3000, function() {
+    console.log('Example app listening on port 3000!');
+});
