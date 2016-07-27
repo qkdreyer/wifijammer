@@ -1,24 +1,25 @@
 {
-    "name": "wifijammer",
-    "version": "1.0.0",
-    "description": "wifijammer ==========",
-    "main": "server.js",
-    "dependencies": {
-        "express": "^4.14.0"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "forever restart -l $(PWD)/log/forever.log -o $(PWD)/log/forever.log -e $(PWD)/log/forever.log server.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/qkdreyer/wifijammer.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/qkdreyer/wifijammer/issues"
-    },
-    "homepage": "https://github.com/qkdreyer/wifijammer#readme"
+  "name": "wifijammer",
+  "version": "1.0.0",
+  "description": "wifijammer ==========",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "forever restart -l $(PWD)/log/forever.log -o $(PWD)/log/forever.log -e $(PWD)/log/forever.log server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qkdreyer/wifijammer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qkdreyer/wifijammer/issues"
+  },
+  "homepage": "https://github.com/qkdreyer/wifijammer#readme"
 }

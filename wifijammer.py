@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import logging
+import json
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR) # Shut up Scapy
 from scapy.all import *
 conf.verb = 0 # Scapy I thought I told you to shut up
@@ -78,6 +79,9 @@ def parse_args():
     parser.add_argument("-a",
                         "--accesspoint",
                         help="Enter the MAC address of a specific access point to target")
+    parser.add_argument("-f",
+                        "--file",
+                        help="Database file")
     parser.add_argument("--world",
                         help="N. American standard is 11 channels but the rest \
                                 of the world it's 13 so this options enables the \
@@ -422,21 +426,29 @@ def stop(signal, frame):
         sys.exit('\n['+R+'!'+W+'] Closing')
 
 if __name__ == "__main__":
+    args = parse_args()
+    
+    if args.dev and args.file:
+        with open(args.file, 'r+') as pfile:
+            data = json.load(pfile)
+            pfile.seek(0)
+            pfile.truncate()
+            data['clients'].append("A")
+            json.dump(data, pfile)
+        sys.exit(0)
+    
     if os.geteuid():
         sys.exit('['+R+'-'+W+'] Please run as root')
+
     clients_APs = []
     APs = []
     DN = open(os.devnull, 'w')
     lock = Lock()
-    args = parse_args()
     monitor_on = None
     mon_iface = get_mon_iface(args)
     conf.iface = mon_iface
     mon_MAC = mon_mac(mon_iface)
     first_pass = 1
-
-    if args.dev:
-        sys.exit(0)
 
     # Start channel hopping
     hop = Thread(target=channel_hop, args=(mon_iface, args))
