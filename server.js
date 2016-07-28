@@ -24,6 +24,14 @@ app.post('/mac/:mac', function(req, res) {
     });
 });
 
+app.delete('/mac/:mac', function(req, res) {
+    var mac = req.params.mac;
+
+    res.json({
+        'status': true
+    });
+});
+
 app.listen(3000, function() {
     console.log('Example app listening on port 3000!');
 });
