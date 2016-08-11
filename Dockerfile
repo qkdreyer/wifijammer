@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM resin/raspberrypi3-node:slim
 
 RUN apt-get update \
 && apt-get install -y curl git python-scapy \
