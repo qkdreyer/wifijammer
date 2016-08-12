@@ -7,7 +7,7 @@ RUN apt-get update \
 EXPOSE 3000
 WORKDIR /app
 VOLUME /log
-ADD . .
+ADD . /app
 
 RUN npm install
 RUN npm install forever -g

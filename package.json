@@ -10,7 +10,7 @@
     "devDependencies": {},
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "forever restart -l $(pwd)/log/forever.log -o $(pwd)/log/forever.log -e $(pwd)/log/forever.log server.js"
+        "start": "forever start -l $(pwd)/log/forever.log -o $(pwd)/log/forever.log -e $(pwd)/log/forever.log server.js"
     },
     "repository": {
         "type": "git",
